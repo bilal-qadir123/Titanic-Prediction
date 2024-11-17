@@ -1,6 +1,6 @@
 import pandas as pd
 from sklearn import preprocessing
-from sklearn.naive_bayes import GaussianNB
+from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import confusion_matrix, accuracy_score
 from sklearn.model_selection import train_test_split
 
@@ -22,7 +22,7 @@ features = list(zip(pclass_encoded, sex_encoded, age_encoded, sibsp_encoded, par
 
 features_train, features_test, label_train, label_test = train_test_split(features, survived_encoded, test_size=0.2, random_state=42)
 
-model = GaussianNB()
+model = KNeighborsClassifier()
 model.fit(features_train, label_train)
 
 predicted = model.predict(features_test)
@@ -34,4 +34,4 @@ print("Confusion Matrix:")
 print(conf_mat)
 
 accuracy = accuracy_score(label_test, predicted)
-print("Accuracy:", accuracy)
+print("Accuracy:", accuracy) 
